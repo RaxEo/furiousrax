@@ -1,0 +1,34 @@
+> install.packages(c("ggplot2", "ggpubr", "tidyverse", "broom", "AICcmodavg"))
+> library(ggplot2)
+> library(ggpubr) 
+> library(tidyverse)
+> library(broom)
+> library(AICcmodavg)
+
+#One-way ANOVA
+> crop.data=read.csv(file.choose())
+> one.way = aov(yield ~ fertilizer, data = crop.data)
+> summary(one.way)
+
+#Two-way ANOVA
+> two.way = aov(yield ~ fertilizer + density, data = crop.data)
+> summary(two.way)
+
+#Interaction
+>interaction = aov(yield ~ fertilizer*density, data = crop.data)
+>summary(interaction)
+
+#Blocking
+> blocking = aov(yield ~ fertilizer + density + block, data = crop.data)
+> summary(blocking)
+
+# Find the best-fit model
+> library(AICcmodavg)
+> model.set = list(one.way, two.way, interaction, blocking)
+> model.names = c("one.way", "two.way", "interaction", "blocking")
+> aictab(model.set, modnames = model.names)
+
+#Check for homoscedasticity
+> par(mfrow=c(2,2))
+> plot(two.way)
+> par(mfrow=c(1,1))

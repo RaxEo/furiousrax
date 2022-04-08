@@ -1,0 +1,16 @@
+#SIMPLE LINEAR REGRESSION
+
+> input=read.csv("C:/Users/ANUJA/Documents/Zoom/ageheight.csv")
+> lmHeight = lm(height~age,data=input)
+> summary(lmHeight)
+> plot(input,pch=16,col="blue")
+> lmHeight=lm(height~age,data=input)
+> a = data.frame(age=20.5)
+> result = predict(lmHeight,a)
+> print(result)
+
+#MULTIPLE LINEAR REGRESSION
+
+> input=read.csv("C:/Users/ANUJA/Documents/Zoom/ageheight.csv")
+> lmHeight=lm(height~age + no_siblings,data=input)
+> summary(lmHeight)

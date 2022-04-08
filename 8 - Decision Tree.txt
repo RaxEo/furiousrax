@@ -1,0 +1,16 @@
+> install.packages("party")
+> library(party)
+> print(head(readingSkills))
+> input.dat <- readingSkills[c(1:105),]
+> png(file = "decision_tree.png")
+> output.tree <- ctree(nativeSpeaker ~ age + shoeSize + score,data = input.dat)
+> plot(output.tree)
+> dev.off()
+
+#use the randomForest() function to create the decision tree and see it's graph.
+> library(party)
+> install.packages("randomForest")
+> library(randomForest)
+> output.forest = randomForest(nativeSpeaker ~ age + shoeSize + score,data = readingSkills)
+> print(output.forest)
+> plot(output.forest)

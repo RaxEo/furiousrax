@@ -1,0 +1,10 @@
+#One Sample t-test
+
+> mistime=read.csv(file.choose())
+> t.test(mistime$TIME,alternative="greater",mu=90)
+
+#Two Sample t-test
+
+> mistime2=read.csv(file.choose())
+>t.test(mistime2$Time_Before,mistime2$Time_After,alternative="two.sided",var.equal = 
+TRUE)
